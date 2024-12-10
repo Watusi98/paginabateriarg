@@ -1,12 +1,12 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 
 const AboutUs = () => {
   return (
     <section style={styles.container}>
-      <div style={styles.overlay}>
-        <div style={styles.content}>
-          <h1 style={styles.title}>Acerca de Nosotros</h1>
-          <p style={styles.text}>
+      <div style={overlay.container}>
+        <div style={content.container}>
+          <h1 style={title.container}>Acerca de Nosotros</h1>
+          <p style={text.container}>
             En <strong>Baterías a Domicilio RG</strong>, nos dedicamos a brindarte
             soluciones rápidas y confiables cuando más las necesitas. Con más de 6
             años de experiencia, somos expertos en el servicio de baterías a
@@ -15,7 +15,7 @@ const AboutUs = () => {
             realizar un chequeo completo del alternador, garantizando que todo
             funcione a la perfección.
           </p>
-          <p style={styles.text}>
+          <p style={text.container}>
             Nuestro objetivo es hacerte la vida más fácil, con atención
             personalizada, rapidez y sin costos adicionales por el servicio en tu
             ubicación. ¡Confía en nosotros para mantener tu vehículo en marcha!
@@ -26,40 +26,53 @@ const AboutUs = () => {
   );
 };
 
-const styles = {
+const styles: { container: CSSProperties } = {
   container: {
     width: "100%",
-    height: "100vh", // Abarca toda la altura de la pantalla
-    backgroundImage: "url('https://media.giphy.com/media/fSRQtBAzrPokPCItuu/giphy.gif?cid=790b7611dofdciltr0zhbsq8j4xov0rl04gbgkfs1kb1cs0p&ep=v1_gifs_search&rid=giphy.gif&ct=g')", // Ruta al GIF
-    backgroundSize: "cover", // El GIF cubre todo el fondo
-    backgroundPosition: "center", // Centrado del GIF
-    backgroundRepeat: "no-repeat", // Evita repeticiones
-    position: "relative", // Para colocar la superposición
+    height: "100vh",
+    backgroundImage:
+      "url('https://media.giphy.com/media/fSRQtBAzrPokPCItuu/giphy.gif?cid=790b7611dofdciltr0zhbsq8j4xov0rl04gbgkfs1kb1cs0p&ep=v1_gifs_search&rid=giphy.gif&ct=g')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    position: "relative", // Este es compatible con CSSProperties
     color: "#fff",
     textAlign: "center",
   },
-  overlay: {
-    backgroundColor: "rgba(0, 0, 0, 0.5)", // Capa semitransparente para mejor contraste
+};
+
+const overlay: { container: CSSProperties } = {
+  container: {
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
     width: "100%",
     height: "100%",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
   },
-  content: {
+};
+
+const content: { container: CSSProperties } = {
+  container: {
     maxWidth: "900px",
     margin: "0 auto",
     padding: "20px",
-    backgroundColor: "rgba(0, 0, 0, 0.7)", // Fondo semitransparente para texto
+    backgroundColor: "rgba(0, 0, 0, 0.7)",
     borderRadius: "10px",
   },
-  title: {
+};
+
+const title: { container: CSSProperties } = {
+  container: {
     fontSize: "32px",
     fontWeight: "bold",
     marginBottom: "20px",
     color: "#ffcc00",
   },
-  text: {
+};
+
+const text: { container: CSSProperties } = {
+  container: {
     fontSize: "18px",
     lineHeight: "1.8",
     color: "#fff",

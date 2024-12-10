@@ -4,15 +4,15 @@ const GoogleMap = () => {
   return (
      <div style={container.container}>
       {/* Sección del cuadro lateral */}
-      <div style={styles.sidebar}>
-        <div style={styles.overlay}>
-          <h2 style={styles.title}>Entregas a Domicilio</h2>
-          <p style={styles.text}>
+      <div style={sidebar.container}>
+        <div style={overlay.container}>
+          <h2 style={title.container}>Entregas a Domicilio</h2>
+          <p style={text.container}>
             En <strong>Baterías a Domicilio RG</strong>, llegamos a donde nos
             necesites. Ya sea en tu casa, trabajo o en la carretera, nuestro
             equipo está listo para asistirte. 🚗🔋
           </p>
-          <p style={styles.text}>
+          <p style={text.container}>
             Ofrecemos:
             <ul>
               <li>🚚 Entrega rápida y confiable.</li>
@@ -20,7 +20,7 @@ const GoogleMap = () => {
               <li>🔍 Chequeo completo del alternador.</li>
             </ul>
           </p>
-          <p style={styles.text}>
+          <p style={text.container}>
             ¡Confía en nosotros para mantener tu vehículo en marcha, donde sea
             que estés!
           </p>
@@ -28,7 +28,7 @@ const GoogleMap = () => {
       </div>
 
       {/* Sección del mapa */}
-      <div style={styles.mapContainer}>
+      <div style={mapContainer.container}>
         <iframe
           src="https://www.google.com/maps/d/embed?mid=1yH7qD13M2pfqpy3qFsN5JYu7FbUNMBU&ehbc=2E312F"
           width="100%"
@@ -53,15 +53,8 @@ const container: { container: React.CSSProperties } = {
   },
 };
 
-const sidebar2 = {
+const sidebar: { container: React.CSSProperties } = {
   container: {
-    display: "flex",
-    flexDirection: "row",
-    width: "100vw",
-    height: "100vh",
-    overflow: "hidden",
-  },
-  sidebar: {
     width: "30%", // Lateral ocupa un 30% del espacio
     position: "relative", // Para posicionar la superposición
     display: "flex",
@@ -74,7 +67,10 @@ const sidebar2 = {
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
   },
-  overlay: {
+}
+
+  const overlay: { container: React.CSSProperties } = {
+    container: {
     backgroundColor: "rgba(0, 0, 0, 0.6)", // Superposición oscura
     width: "100%",
     height: "100%",
@@ -86,19 +82,25 @@ const sidebar2 = {
     alignItems: "flex-start",
     textAlign: "left",
   },
-  title: {
+}
+const title: { container: React.CSSProperties } = {
+  container: {
     fontSize: "24px",
     fontWeight: "bold",
     marginBottom: "15px",
     color: "#ffcc00",
   },
-  text: {
+}
+  const text: { container: React.CSSProperties } = {
+    container: {
     fontSize: "16px",
     lineHeight: "1.8",
     marginBottom: "10px",
     color: "#fff",
   },
-  mapContainer: {
+}
+const mapContainer: { container: React.CSSProperties } = {
+  container: {
     width: "70%", // Mapa ocupa un 70% del espacio
     height: "100%",
   },
