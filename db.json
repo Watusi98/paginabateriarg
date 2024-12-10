@@ -1,3 +1,4 @@
+
 {
     "baterias": {
 "AlfaRomeo": {
@@ -57,7 +58,9 @@
   },
   "Ram": {
     "RAM1500": "Batería 95A",
-    "RAM2500": "Batería 95A"
+    "RAM2500": "Batería 95A",
+    "Journey":"Batería 65A",
+    "Renegade":"Batería 65A"
   },
   "Volvo": {
     "XC40": "Batería 75A",
@@ -349,5 +352,96 @@
       "Wagon R+": "Batería 35A",
       "APV": "Batería 65A",
       "Liana": "Batería 35A"
-    }}
+   }
+  },
+  "vehiculos": [
+    {
+      "marca": "AlfaRomeo",
+      "modelos": ["Giulia", "Stelvio", "Tonale (híbrido)"]
+    },
+    {
+      "marca": "Audi",
+      "modelos": ["A1", "A3", "A4", "A5", "A6", "Q3", "Q5", "Q7", "Q8", "RS 3"]
+    },
+    {
+      "marca": "BMW",
+      "modelos": ["Serie 1", "Serie 2", "Serie 3", "Serie 4", "Serie 5", "Serie 7", "X1", "X3", "X5", "X6", "X7", "Z4"]
+    },
+    {
+      "marca": "Chevrolet",
+      "modelos": ["Aveo", "Camaro", "Captiva", "Celta", "Chevrolet C10", "Chevrolet C20", "Colorado", "Corvette", "Cruze", "Malibu", "Onix", "S10", "Spark", "Suburban", "Tahoe", "Trax", "Traverse", "Spin", "Trailblazer", "Tracker", "Montana"]
+    },
+    {
+      "marca": "Citroen",
+      "modelos": ["Berlingo", "C1", "C3", "C4", "C5", "C5 Aircross", "C6", "DS4", "Evasion", "Jumpy", "Saxo", "SpaceTourer", "Xantia", "Xsara"]
+    },
+    {
+      "marca": "Dodge",
+      "modelos": ["Journey", "RAM 1500", "RAM 2500", "Renegade"]
+    },
+    {
+      "marca": "Fiat",
+      "modelos": ["500", "600", "1600", "Abarth", "Argo", "Bravo", "Cinquecento", "Cronos", "Doblo", "Fiorino", "Idea", "Linea", "Mobi", "Palio", "Punto", "Qubo", "Seicento", "Siena", "Strada", "Tempra", "Tipo", "Toro", "Uno"]
+    },
+    {
+      "marca": "Ford",
+      "modelos": ["Bronco", "Edge", "Escort", "F-150", "F100", "F4000", "F150", "Fiesta", "Focus", "Galaxy", "Kuga", "Maverick", "Mondeo", "Mustang", "Ranger", "S-MAX", "Transit", "WindStar", "Ka", "Ka", "Laser", "Orion", "Taunus", "Torino", "Verona", "Explorer", "Escape"]
+    },
+    {
+      "marca": "Honda",
+      "modelos": ["Accord", "Civic", "City", "CR-V", "Fit", "HR-V", "Jazz", "Legend", "Odyssey", "Passport", "Pilot", "Prelude", "Ridgeline", "Stream", "Vigor"]
+    },
+    {
+      "marca": "Iveco",
+      "modelos": ["Cursor", "Daily", "Eurocargo", "Eurotech", "Massif", "PowerStar", "S-Way", "Stralis", "Trakker", "TurboDaily", "X-Way"]
+    },
+    {
+      "marca": "Jeep",
+      "modelos": ["Compass", "Cherokee", "Grand Cherokee", "Wrangler"]
+    },
+    {
+      "marca": "Kia",
+      "modelos": ["Seltos", "Sportage", "Niro (eléctrico)", "Sorento", "Stinger"]
+    },
+    {
+      "marca": "MercedesBenz",
+      "modelos": ["Actros", "Clase A", "Clase B", "Clase C", "Clase E", "CLA", "CLK", "GLA", "GLB", "GLC", "GLE", "SLS AMG", "SL", "Sprinter", "Viano", "Vito"]
+    },
+    {
+      "marca": "Mitsubishi",
+      "modelos": ["L200", "Outlander", "Montero"]
+    },
+    {
+      "marca": "Nissan",
+      "modelos": ["Altima", "Cube", "Frontier", "Juke", "Kicks", "March", "Maxima", "Murano", "Navara", "Pathfinder", "Sentra", "Skyline", "Titan", "Versa", "X-Trail", "Tiida"]
+    },
+    {
+      "marca": "Peugeot",
+      "modelos": ["106", "2008", "205", "206", "207", "3008", "306", "307", "308", "4008", "405", "406", "407", "5008", "504", "508", "607", "806", "Boxer", "Expert", "Hoggar", "Partner", "RCZ", "Rifter"]
+    },
+    {
+      "marca": "Renault",
+      "modelos": ["Clio", "Duster", "Espace", "Kangoo", "Laguna", "Logan", "Megane", "Oroch", "R12", "R18", "R19", "R21", "R4", "R6", "R9", "Sandero", "Scenic", "Symbol", "Twingo", "Trafic"]
+    },
+    {
+      "marca": "Scania",
+      "modelos": ["Citywide", "Griffin", "Interlink", "OmniExpress", "Serie G", "Serie P", "Serie R", "Serie S", "Streamline", "Touring", "V8"]
+    },
+    {
+      "marca": "Toyota",
+      "modelos": ["Avensis", "Camry", "Celica", "C-HR", "Corolla", "Fortuner", "Hiace", "Hilux", "Land Cruiser", "Noah", "Prius", "RAV4", "Supra", "Tacoma", "Tundra", "Yaris"]
+    },
+    {
+      "marca": "Volkswagen",
+      "modelos": ["Amarok", "Atlas", "Beetle", "Fox", "Golf", "Gol", "Gol Trend", "ID.4", "Jetta", "Polo", "Passat", "Saveiro", "Sharan", "Tiguan", "T-Cross", "Touareg", "Transporter", "Up!", "Virtus"]
+    },
+    {
+      "marca": "Volvo",
+      "modelos": ["XC40", "XC60", "XC90", "V60"]
+    },
+    {
+      "marca": "Suzuki",
+      "modelos": ["Alto", "APV", "Baleno", "Carry", "Celerio", "Dzire", "Ertiga", "Esteem", "Grand Vitara", "Ignis", "Jimny", "Kizashi", "Liana", "Samurai", "S-Cross", "Swift", "Verona", "Wagon R+", "XL7", "SX4"]
+    }
+  ]
 }
