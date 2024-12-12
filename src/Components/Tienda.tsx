@@ -71,49 +71,53 @@ const Tienda = () => {
 const handleImageClick = (imageUrl: string) => {
   setSelectedImage(imageUrl); // Cambia la imagen seleccionada
 };
-  return (
-    <div className="bg-black py-8 pt-20">
-      <div className="absolute inset-0 z-0">
-        <img
-          src="https://media.giphy.com/media/fSRQtBAzrPokPCItuu/giphy.gif?cid=790b7611dofdciltr0zhbsq8j4xov0rl04gbgkfs1kb1cs0p&ep=v1_gifs_search&rid=giphy.gif&ct=g"
-          alt="Fondo GIF"
-          className="w-full h-full object-cover opacity-30"
-        />
-      </div>
-{/* Mostrar batería recomendada */}
-{bateriaRecomendada && (
-        <div className="text-center mb-8">
-          <h2 className="text-white text-lg">Batería Recomendada para su {marca} {modelo} {bateriaRecomendada}</h2>
-          <div className=" bg-base-100 shadow-xl border-4 border-white p-3 bg-center max-w-xs mx-auto flex flex-col items-center justify-center">
-            <figure className="px-5 pt-8">
-              <img
-                src={bateriaRecomendada.image}
-                alt={bateriaRecomendada.title}
-                className="rounded-xl w-full"
-              />
+return (
+  <div className="bg-black py-8 pt-20 relative">
+    {/* Fondo GIF */}
+    <div className="absolute inset-0 z-0">
+      <img
+        src="https://media.giphy.com/media/fSRQtBAzrPokPCItuu/giphy.gif?cid=790b7611dofdciltr0zhbsq8j4xov0rl04gbgkfs1kb1cs0p&ep=v1_gifs_search&rid=giphy.gif&ct=g"
+        alt="Fondo GIF"
+        className="w-full h-full object-cover opacity-30"
+      />
+    </div>
 
-            </figure>
-            <div className=" items-center text-center">
-              <h2 className=" text-lg">{bateriaRecomendada.title}</h2>
-              <p className="text-sm">{bateriaRecomendada.description}</p>
-              <FaCarBattery className="text-9xl"/>
-              <a
-                    href={`https://wa.me/${whatsappNumber}?text=Hola,%20me%20interesa%20el%20producto:%20${marca},${modelo} que es ${bateriaRecomendada}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-primary text-sm"
-                  >
-                    Consultar Stock
-                  </a>
+    {/* Contenido */}
+    {bateriaRecomendada && (
+      <div className="relative text-center mb-8 pt-20">
+        {/* Título */}
+        <h2 className="text-white text-lg mb-6">
+          Batería Recomendada para su {marca} {modelo}: {bateriaRecomendada}
+        </h2>
 
-            </div>
+        {/* Tarjeta con la batería */}
+        <div className="bg-base-100 shadow-xl border-4 border-white p-3 max-w-xs mx-auto flex flex-col items-center justify-center rounded-lg">
+          {/* Imagen */}
+          <figure className="px-5 pt-8">
+            <img
+              src={bateriaRecomendada.image}
+              alt={bateriaRecomendada.title}
+              className="rounded-xl w-full"
+            />
+          </figure>
+
+          {/* Detalles de la batería */}
+          <div className="flex flex-col items-center text-center p-4 border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition-shadow bg-black text-white mt-4">
+            <h2 className="text-lg font-semibold mb-2">{bateriaRecomendada.title}</h2>
+            <p className="text-sm mb-4">{bateriaRecomendada.description}</p>
+            <FaCarBattery className="text-9xl text-yellow mb-4" />
+            <a
+              href={`https://wa.me/${whatsappNumber}?text=Hola,%20me%20interesa%20para%20mi%20vehiculo:%20${marca},${modelo}%20la%20${bateriaRecomendada}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-blue-300 text-sm"
+            >
+              Consultar Stock
+            </a>
           </div>
         </div>
-      )}
-
-
-
-      
+      </div>
+    )}
       <div className="flex items-center justify-center min-h-screen">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6">
           {products.map((product) => (
