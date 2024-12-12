@@ -2,34 +2,36 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecomendacion } from "../context/RecomendacionContext";
 
-async function POST(url: string, data: any) {
-  try {
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+// async function POST(url: string, data: any) {
+//   try {
+//     const response = await fetch(url, {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(data),
+//     });
 
-    if (!response.ok) {
-      throw new Error(`Error ${response.status}: ${response.statusText}`);
-    }
+//     if (!response.ok) {
+//       throw new Error(`Error ${response.status}: ${response.statusText}`);
+//     }
 
-    return await response.json();
-  } catch (error) {
-    console.error("Error en la solicitud POST:", error);
-    throw error;
-  }
-}
+//     return await response.json();
+//   } catch (error) {
+//     console.error("Error en la solicitud POST:", error);
+//     throw error;
+//   }
+// }
 
 const HeroBusqueda = () => {
   const [formData, setFormData] = useState({ marca: "", modelo: "", año: "" });
   const [vehiculos, setVehiculos] = useState<{ marca: string; modelos: string[] }[]>([]);
-  const navigate = useNavigate();
-  const { setBateriaRecomendada } = useRecomendacion();
 
-  const añosVehiculos = Array.from({ length: 2024 - 1990 + 1 }, (_, i) => 1990 + i);
+  const [baterias, setBaterias] = useState<any>()
+
+
+  const navigate = useNavigate();
+  const { setBateriaRecomendada, setMarca, setModelo } = useRecomendacion();
 
   useEffect(() => {
     const fetchVehiculos = async () => {
@@ -42,33 +44,98 @@ const HeroBusqueda = () => {
       }
     };
 
+    const fetchBaterias = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/baterias");
+        const data = await response.json();
+        setBaterias(data);
+      } catch (error) {
+        console.error("Error al obtener los datos de las baterias:", error);
+      }
+    };
+
+    fetchBaterias();
+
     fetchVehiculos();
   }, []);
 
+
+  console.log(baterias)
+
+  // function generarBaterias(base: string): { [año: string]: string } {
+  //   const años = Array.from({ length: 2024 - 1990 + 1 }, (_, i) => (1990 + i).toString());
+  //   return años.reduce((acc, año) => {
+  //     acc[año] = `${base} (${año})`;
+  //     return acc;
+  //   }, {} as { [año: string]: string });
+  // }
+
+  const obtenerBateria = () => {
+    const { marca, modelo, año } = formData;
+    if (!marca || !modelo || !año) return "Selecciona todos los campos.";
+
+    const marcaBateria = baterias[marca]
+
+    const bateriaRecomendada = marcaBateria[modelo]
+
+    setBateriaRecomendada(bateriaRecomendada)
+    setMarca(marca)
+    setModelo(modelo)
+
+    return `${marca} ${modelo} ${año}`;
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
+
+    // Actualizar el estado basado en el campo modificado
     setFormData((prev) => ({
       ...prev,
       [name]: value,
-      ...(name === "marca" && { modelo: "", año: "" }),
-      ...(name === "modelo" && { año: "" }),
+      ...(name === "marca" && { modelo: "", año: "" }), // Reinicia modelo y año si cambia la marca
+      ...(name === "modelo" && { año: "" }), // Reinicia año si cambia el modelo
     }));
   };
 
-  const handleSubmit = async () => {
-    try {
-      const response = await POST("http://localhost:3000/Busqueda", formData);
-      console.log("Respuesta del servidor:", response);
-      if (response.bateria) {
-        setBateriaRecomendada(response.bateria);
-        navigate("/Tienda", { state: { bateria: response.bateria } });
-      } else {
-        alert("No se encontró una batería recomendada.");
-      }
-    } catch (error) {
-      alert("Hubo un problema al enviar los datos. Intenta nuevamente.");
+  const añosVehiculos = Array.from({ length: 2024 - 1990 + 1 }, (_, i) => 1990 + i);
+
+  const handleBuscarBateria = () => {
+    const bateria = obtenerBateria();
+    if (bateria !== "Selecciona todos los campos.") {
+      navigate("/Tienda", { state: { bateria } }); // Redirige a Tienda
+    } else {
+      alert("Por favor, completa todos los campos.");
     }
   };
+
+  // const handleInputChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  //   const { name, value } = e.target;
+  //   setFormData((prev) => ({
+  //     ...prev,
+  //     [name]: value,
+  //     ...(name === "marca" && { modelo: "", año: "" }),
+  //     ...(name === "modelo" && { año: "" }),
+  //   }));
+  // };
+
+  // const handleSubmit = async () => {
+  //   try {
+  //     const response = await POST("http://localhost:3000/Busqueda", formData);
+  //     console.log("Respuesta del servidor:", response);
+  //     if (response.bateria) {
+  //       setBateriaRecomendada(response.bateria);
+  //       navigate("/Tienda", { state: { bateria: response.bateria } });
+  //     } else {
+  //       alert("No se encontró una batería recomendada.");
+  //     }
+  //   } catch (error) {
+  //     alert("Hubo un problema al enviar los datos. Intenta nuevamente.");
+  //   }
+  // };
+
+
+
+
 
   return (
     <section className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white p-6">
@@ -119,7 +186,7 @@ const HeroBusqueda = () => {
         </select>
       </div>
       <button
-        onClick={handleSubmit}
+        onClick={handleBuscarBateria}
         className="p-3 bg-gray-100 hover:bg-yellow-400 text-black font-semibold py-2 px-8 rounded-md mt-8"
       >
         Buscar
