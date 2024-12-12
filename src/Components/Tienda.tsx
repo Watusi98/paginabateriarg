@@ -5,7 +5,8 @@ import { useRecomendacion } from "../context/RecomendacionContext";
 
 const Tienda = () => {
   const { bateriaRecomendada } = useRecomendacion();
-  const [selectedImage, setSelectedImage] = useState<string>(""); // Estado para la imagen seleccionada
+  const [selectedImage, setSelectedImage] = useState<string>(""); // Estado para la imagen seleccionada}
+  const whatsappNumber = "2966503488"; // Reemplaza con tu número de WhatsApp
   const products = [
     {
       id: 1,  
@@ -64,8 +65,9 @@ const Tienda = () => {
      description: "1050-1500 CCA",
     },
 ];
-
-  const whatsappNumber = "2966503488"; // Reemplaza con tu número de WhatsApp
+const handleImageClick = (imageUrl: string) => {
+  setSelectedImage(imageUrl); // Cambia la imagen seleccionada
+};
   return (
     <div className="bg-black py-8 pt-20">
       <div className="absolute inset-0 z-0">
@@ -154,8 +156,8 @@ const Tienda = () => {
           >
             <img
               src={selectedImage}
-              alt="Vista ampliada del producto"
-              className="rounded-lg w-full h-auto max-w-4xl"
+              alt="Vista ampliada"
+              className="rounded-lg w-full h-auto"
             />
             <button
               className="absolute top-2 right-2 btn btn-sm btn-error"

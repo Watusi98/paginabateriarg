@@ -32,7 +32,6 @@ const HeroBusqueda = () => {
   const añosVehiculos = Array.from({ length: 2024 - 1990 + 1 }, (_, i) => 1990 + i);
 
   useEffect(() => {
-    // Fetch dinámico desde db.json
     const fetchVehiculos = async () => {
       try {
         const response = await fetch("http://localhost:3000/vehiculos");
@@ -57,19 +56,19 @@ const HeroBusqueda = () => {
   };
 
   const handleSubmit = async () => {
-  try {
-    const response = await POST("http://localhost:3000/Busqueda", formData);
-    console.log("Respuesta del servidor:", response); // Verifica la respuesta
-    if (response.bateria) {
-      setBateriaRecomendada(response.bateria); // Asegúrate de que estás usando la respuesta correcta
-      navigate("/Tienda", { state: { bateria: response.bateria } });
-    } else {
-      throw new Error("No se encontró una batería recomendada.");
+    try {
+      const response = await POST("http://localhost:3000/Busqueda", formData);
+      console.log("Respuesta del servidor:", response);
+      if (response.bateria) {
+        setBateriaRecomendada(response.bateria);
+        navigate("/Tienda", { state: { bateria: response.bateria } });
+      } else {
+        alert("No se encontró una batería recomendada.");
+      }
+    } catch (error) {
+      alert("Hubo un problema al enviar los datos. Intenta nuevamente.");
     }
-  } catch (error) {
-    alert("Hubo un problema al enviar los datos. Intenta nuevamente.");
-  }
-};
+  };
 
   return (
     <section className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white p-6">
